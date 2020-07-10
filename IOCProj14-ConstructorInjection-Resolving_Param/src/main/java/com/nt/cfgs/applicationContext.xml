@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+    <!-- Bean cfg -->
+    <bean id="st" class="com.nt.beans.Student">
+    <constructor-arg type="java.lang.String"  value="Mukesh"/>
+    <constructor-arg type="int" value="1010"/>
+    <constructor-arg type="float" value="89.08f"/>
+    </bean>
+    <bean id="ms" class="com.nt.beans.Marks">
+     <constructor-arg index="0" value="30"/>
+     <constructor-arg index="2" value="31"/>
+     <constructor-arg index="1" value="60"/>
+    </bean>
+    <bean id="st1" class="com.nt.beans.Student">
+    <constructor-arg type="java.lang.String" value="Shreya" index="1" name="sname"/>
+    <constructor-arg name="sno" value="2020"/>
+    <constructor-arg name="avg" value="99.98f"/>
+    </bean>
+</beans>

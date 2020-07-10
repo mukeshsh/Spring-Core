@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+    <!-- dependent bean cfg -->
+    <bean id="ee" class="com.nt.comp.ElectricEngine"/>
+    <bean id="we" class="com.nt.comp.WaterEngine"/>
+    <bean id="cnge" class="com.nt.comp.CNGEngine"/>
+    <bean id="de" class="com.nt.comp.DieselEngine"/>
+    <bean id="pe" class="com.nt.comp.PetrolEngine"/>
+    <!-- target bean cfg -->
+    <bean id="ve" class="com.nt.comp.Vehicle">
+    <property name="engine" ref="cnge"/>
+    </bean>
+</beans>
