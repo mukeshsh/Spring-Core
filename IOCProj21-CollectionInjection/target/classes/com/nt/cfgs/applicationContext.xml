@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+  <bean class="java.util.Date" id="sysDate" />
+	<bean class="java.util.Date" id="dojDate">
+		<property value="114" name="year" />
+		<property value="10" name="month" />
+		<property value="20" name="date" />
+	</bean>
+	<bean class="java.util.Date" id="dobDate">
+		<property value="90" name="year" />
+		<property value="10" name="month" />
+		<property value="10" name="date" />
+	</bean>
+	<bean class="com.nt.beans.Marks" id="mk">
+		<property name="marks">
+			<list>
+				<value>50</value>
+				<value>60</value>
+				<value>70</value>
+			</list>
+		</property>
+		<property name="dates">
+			<array>
+				<ref bean="sysDate" />
+				<ref bean="dojDate" />
+				<ref bean="dobDate" />
+			</array>
+		</property>
+	</bean>
+   <bean id="clg" class="com.nt.beans.College">
+      <property name="studNames">
+         <list value-type="java.lang.String">
+             <value>Mukesh</value>
+             <value>Bhavesh</value>
+             <value>Anil</value>
+             <value>Ashish </value>
+             <value>Shreya</value>
+             <value>Shalini</value>
+         </list>
+      </property>
+      <property name="dates">
+      <list value-type="java.util.Date">
+          <ref bean="dobDate"/>
+          <ref bean="sysDate"/>
+          <ref bean="dojDate"/>
+       </list>
+      </property> 
+   </bean>
+   <bean id="pinfo" class="com.nt.beans.PersonalInfo">
+         <property name="phoneNumbers">
+            <set value-type="java.lang.Long">
+                   <value>9559037858</value>
+                   <value>7007891408</value>
+                   <value>9918074293</value>
+                   <value>8798789435</value>
+                   <value>4578903465</value>
+            </set>
+         </property>
+         <property name="dates">
+            <list value-type="java.util.Date">
+               <ref bean="sysDate"/>
+               <ref bean="dojDate"/>
+               <ref bean="dobDate"/>
+            </list>
+         </property>
+   </bean>
+   <bean id="props" class="com.nt.beans.FacultiesInfo">
+        <property name="facultySubjects">
+                 <props>
+                      <prop key="HK">CoreJava</prop>
+                      <prop key="Murali">Oracle</prop>
+                      <prop key="Nataraz">Spring</prop>
+                      <prop key="NagoorBabu">Hibernate</prop>
+                      <prop key="Raghu">RestFull Web Services</prop>
+                      <prop key="Natraz">Rest All</prop>
+                 </props>        
+        </property>
+   </bean>
+   <bean id="fruit" class="com.nt.beans.FruitStore">
+       <property name="fruits">
+           <map key-type="java.lang.String" value-type="java.lang.String">
+               <entry>
+                  <key>
+                       <value>Banana</value>
+                  </key>
+                  <value>yellow</value>
+               </entry>
+               <entry key="grapes" value="green"/>
+               <entry key="yellow" value="mango"/>
+           </map>
+       </property>
+       <property name="specialDates">
+           <map key-type="java.lang.String" value-type="java.util.Date">
+               <entry key="today" value-ref="sysDate"/>
+               <entry key="dob" value-ref="dobDate"/>
+               <entry key="doj" value-ref="dojDate"/>
+           </map>
+       </property>
+       <property name="specialDates1">
+            <map key-type="java.util.Date" value-type="java.lang.String">
+                 <entry key-ref="sysDate" value="Today"/>
+                 <entry key-ref="dobDate" value="dob"/>
+                 <entry key-ref="dojDate" value="doj"/>
+            </map>
+       </property>
+   </bean>
+</beans>

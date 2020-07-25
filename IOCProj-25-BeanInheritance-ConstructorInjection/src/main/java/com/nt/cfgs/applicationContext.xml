@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+          <!-- Problem -->
+         <!-- <bean id="mjBike" class="com.nt.beans.Bike">
+         <property name="regNo" value="T3s5DS6567"/>
+         <property name="owner" value="Mukesh"/>
+         <property name="company" value="Bajaj"/>
+         <property name="model" value="XUV34"/>
+         <property name="color" value="Red"/>
+         <property name="engineCC" value="200"/>
+         <property name="fuelTankCapacity" value="20"/>
+         <property name="engineNO" value="1234"/>
+     </bean>
+     <bean id="djBike" class="com.nt.beans.Bike">
+         <property name="regNo" value="T3s5DS7867"/>
+         <property name="owner" value="Suresh"/>
+         <property name="company" value="Hyundai"/>
+         <property name="model" value="TVS34"/>
+         <property name="color" value="brown"/>
+         <property name="engineCC" value="300"/>
+         <property name="fuelTankCapacity" value="35"/>
+         <property name="engineNO" value="4312"/>
+     </bean> -->
+     <!-- Solution No::1  -->
+         <!-- <bean id="mjBike" class="com.nt.beans.Bike">
+         <property name="regNo" value="T3s5DS6567"/>
+         <property name="owner" value="Mukesh"/>
+         <property name="company" value="Bajaj"/>
+         <property name="model" value="XUV34"/>
+         <property name="color" value="Red"/>
+         <property name="engineCC" value="200"/>
+         <property name="fuelTankCapacity" value="20"/>
+         <property name="engineNO" value="1234"/>
+     </bean>
+     <bean id="djBike" class="com.nt.beans.Bike" parent="mjBike">
+         <property name="regNo" value="Tsgf5g678909"/>
+         <property name="owner" value="Shreya"/>
+     </bean> -->
+     
+     <!-- Solution No::2 -->
+      <bean id="BasePulsor" class="com.nt.beans.Bike" abstract="true">
+      <constructor-arg name="color" value="white"/>
+      <constructor-arg name="company" value="Honda"/>
+      <constructor-arg name="engineCC" value="300"/>
+      <constructor-arg name="engineNO" value="3245"/>
+      <constructor-arg name="fuelTankCapacity" value="30"/>
+      <constructor-arg name="model" value="Bajaj"/>
+      <!-- <constructor-arg name="owner" value="Mukesh"/>
+      <constructor-arg name="regNo" value="34fsr76"/> -->
+      </bean>
+      <bean id="mjBike" class="com.nt.beans.Bike" parent="BasePulsor">
+         <constructor-arg name="owner" value="Mukesh"/>
+         <constructor-arg name="regNo" value="Ts6G678901"/>
+      </bean>
+      <bean id="djBike" class="com.nt.beans.Bike" parent="BasePulsor">
+         <constructor-arg name="owner" value="siya"/>
+         <constructor-arg name="regNo" value="Tsbbd6f2432"/>
+      </bean>
+</beans>

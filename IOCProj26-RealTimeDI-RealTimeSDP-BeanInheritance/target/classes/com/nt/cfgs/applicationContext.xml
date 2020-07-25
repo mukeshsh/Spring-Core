@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+       <!-- configure DataSource -->
+       <bean id="drds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+             <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+             <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+             <property name="username" value="jdbc"/>
+             <property name="password" value="class"/>
+       </bean>
+        <bean id="scds" class="org.springframework.jdbc.datasource.SingleConnectionDataSource" parent="drds"/>
+        <bean id="dbcpDs" class="org.apache.commons.dbcp2.BasicDataSource" parent="drds"/>
+        <!-- cfg dao class -->
+    <bean id="studDAO" class="com.nt.dao.StudentDAOImpl">
+    <!-- <constructor-arg ref="drds"/> -->
+    <!-- <constructor-arg ref="scds"/> -->
+    <constructor-arg ref="dbcpDs"/>
+    </bean>
+    <bean id="studService" class="com.nt.service.StudentMgmtServiceImpl">
+    <constructor-arg ref="studDAO"/>
+    </bean>
+    <bean id="controller" class="com.nt.controller.MainController">
+    <constructor-arg ref="studService"/>
+    </bean>
+</beans>

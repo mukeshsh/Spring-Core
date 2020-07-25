@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+   <bean id="drds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+      <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+      <property name="connectionProperties">
+         <props>
+            <prop key="user">jdbc</prop>
+         </props>
+      </property>
+   </bean>
+   <bean id="scds" class="org.springframework.jdbc.datasource.SingleConnectionDataSource" parent="drds">
+       <property name="connectionProperties">
+           <props merge="true">
+                <prop key="password">class</prop>
+           </props>
+       </property>
+   </bean>
+   <!-- dao class cfg -->
+       <bean id="empDAO" class="com.nt.dao.EmployeeDAOImpl">
+            <constructor-arg ref="scds"/>
+       </bean>
+       <!-- service class cfgs -->
+       <bean id="empService" class="com.nt.serveice.EmployeeServiceImpl">
+          <constructor-arg ref="empDAO"/>
+       </bean>
+       <!-- Controller class cfgs -->
+       <bean id="controller" class="com.nt.controller.MainController">
+          <constructor-arg ref="empService"/>
+       </bean>
+</beans>
