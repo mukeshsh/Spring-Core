@@ -1,0 +1,12 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	  <!-- cfgs all dependent spring class -->
+     <bean id="courier" class="com.nt.comp.DTDC"/>
+     <bean id="firstflight" class="com.nt.comp.FirstFlight" primary="true"/>
+     <bean id="bDart" class="com.nt.comp.BlueDart" />
+     <!-- cfgs target class -->
+     <bean id="fkt" class="com.nt.comp.FlipKart" autowire="no"/>
+     <!-- <bean id="fkt" class="com.nt.comp.FlipKart" autowire="autodetect"/> 2to 2.5 -->
+</beans>
