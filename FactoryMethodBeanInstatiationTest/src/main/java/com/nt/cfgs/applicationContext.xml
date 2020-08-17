@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+   <!-- Static factory method bean instanation giving its own class object -->
+   <bean id="c1" class="java.lang.Class" factory-method="forName">
+      <constructor-arg value="java.util.Date"/>
+   </bean>
+   <!-- related bean object -->
+   <bean id="cal1" class="java.util.Calendar" factory-method="getInstance"/>
+   <!-- unrelated bean object -->
+   <bean id="con" class="java.sql.DriverManager" factory-method="getConnection">
+       <constructor-arg value="jdbc:oracle:thin:@localhost:1521:xe"/>
+       <constructor-arg value="jdbc"/>
+       <constructor-arg value="class"/>
+   </bean>
+   <bean id="sys" class="java.lang.System" factory-method="getProperties"/>
+   <bean id="s1" class="java.lang.String">
+     <constructor-arg value="Hello"/>
+   </bean>
+   <bean id="s2" factory-bean="s1" factory-method="concat">
+       <constructor-arg value="345"/>
+   </bean>
+</beans>
